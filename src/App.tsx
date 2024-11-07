@@ -1,26 +1,27 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  BrowserRouter,
+} from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import AuthComponent from "./components/Auth/AuthComponent"; // Path to AuthComponent
 
-function App() {
+const App: React.FC = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <ToastContainer position="bottom-left" />
+      {/* Define the Routes for SignIn and SignUp */}
+      <Routes>
+        {/* For SignIn */}
+        <Route path="/" element={<AuthComponent mode="signin" />} />
+        {/* For SignUp */}
+        <Route path="/signup" element={<AuthComponent mode="signup" />} />
+      </Routes>
+    </BrowserRouter>
   );
-}
+};
 
 export default App;
